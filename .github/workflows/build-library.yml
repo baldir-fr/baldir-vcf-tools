@@ -1,0 +1,14 @@
+name: Test and deploy Typescript Library
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+  
+jobs:
+
+  commit:
+    runs-on: ubuntu-latest
+    container: "denoland/deno:alpine"
+    steps:
+      - name: Deno test
+        run: deno test
