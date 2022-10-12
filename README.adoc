@@ -5,8 +5,9 @@
 :lang: FR
 :imagesdir: readme/assets
 
-image:https://github.com/baldir-fr/baldir-vcf-tools/actions/workflows/build-library.yml/badge.svg[Build library,link="https://github.com/baldir-fr/baldir-vcf-tools/actions/workflows/build-library.yml",window="_blank"]
-image:https://github.com/baldir-fr/baldir-vcf-tools/actions/workflows/generate-docs-and-publish-with-github-pages.yml/badge.svg?event=page_build[Generate and deploy static content to Pages,link="https://github.com/baldir-fr/baldir-vcf-tools/actions/workflows/generate-docs-and-publish-with-github-pages.yml",window="_blank"]
+
+image:https://github.com/baldir-fr/baldir-vcf-tools/actions/workflows/build-library.yml/badge.svg?branch=main[Build library,link="https://github.com/baldir-fr/baldir-vcf-tools/actions/workflows/build-library.yml",window="_blank"]
+image:https://github.com/baldir-fr/baldir-vcf-tools/actions/workflows/generate-docs-and-publish-with-github-pages.yml/badge.svg?branch=main[Generate and deploy static content to Pages,link="https://github.com/baldir-fr/baldir-vcf-tools/actions/workflows/generate-docs-and-publish-with-github-pages.yml",window="_blank"]
 
 Utility library for parsing link:https://datatracker.ietf.org/doc/html/rfc6350[vCard Format,window=_blank].
 
