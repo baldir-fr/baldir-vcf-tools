@@ -1,0 +1,56 @@
+= TODO : présentation
+:author: Auteur
+:revealjs_controls: true
+:revealjs_progress: true
+:revealjs_hash: true
+:highlightjs-theme: https://highlightjs.org/static/demo/styles/agate.css
+//:revealjs_theme: beige
+//:revealjs_theme: black
+//:revealjs_theme: league
+//:revealjs_theme: night
+//:revealjs_theme: serif
+//:revealjs_theme: simple
+//:revealjs_theme: sky
+//:revealjs_theme: solarized
+:revealjs_theme: white
+:revealjs_margin: 0.3
+:outdir: ../docs
+:imagesdir: assets
+:toc: auto
+
+== Slide 1
+
+Exemple d'image
+
+image::sample.jpg[]
+
+=== Slide 1.2
+
+Exemple de code snippet avec import.
+[source,yml]
+----
+include::../docker-compose.yml[]
+----
+
+== Slide 2
+
+[.notes]
+--
+Contenu n'apparaissant pas dans les slides
+Mais dans les notes de présentation ou dans les pdf, ebook, docbook.
+--
+
+Ce chapitre contient des notes de présentation.
+
+ifdef::backend-revealjs[]
+
+== Généré depuis le même fichier Asciidoc
+Chapitre uniquement généré dans les slides.
+
+* link:index.html[Slides générées]
+* link:output.pdf[Pdf]
+* link:output.epub[Ebook]
+* link:output.docbook.xml[Docbook]
+* link:output.docx[Docx]
+
+endif::[]

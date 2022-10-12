@@ -1,0 +1,54 @@
+version: "3.8"
+
+
+services:
+
+  build-slides:
+    image: "asciidoctor/docker-asciidoctor"
+    volumes:
+      - ./:/documents/
+    command:
+      - "asciidoctor-revealjs"
+      - "-a"
+      - "revealjsdir=https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2"
+      - "_content/index.adoc"
+      - "-o"
+      - "docs/index.html"
+
+  build-pdf:
+    image: "asciidoctor/docker-asciidoctor"
+    volumes:
+      - ./:/documents/
+    command:
+      - "asciidoctor-pdf"
+      - "_content/index.adoc"
+      - "-o"
+      - "docs/output.pdf"
+
+  build-epub:
+    image: "asciidoctor/docker-asciidoctor"
+    volumes:
+      - ./:/documents/
+    command:
+      - "asciidoctor-epub3"
+      - "_content/index.adoc"
+      - "-o"
+      - "docs/output.epub"
+
+  build-docbook:
+    image: "asciidoctor/docker-asciidoctor"
+    volumes:
+      - ./:/documents/
+    command:
+      - "asciidoctor"
+      - "-b"
+      - "docbook"
+      - "_content/index.adoc"
+      - "-o"
+      - "docs/output.docbook.xml"
+
+  build-docx:
+    image: "pandoc/core"
+    volumes:
+      - ./:/data/
+    entrypoint: "./generate-docx.sh"
