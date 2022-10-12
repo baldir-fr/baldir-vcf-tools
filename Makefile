@@ -1,4 +1,18 @@
-all: dc-slides dc-pdf dc-epub dc-docbook
+all: deno-test
+docs: dc-slides dc-pdf dc-epub dc-docbook docx
+	${info Documentation was generated into /docs}
+
+deno-test:
+	deno test
+deno-test-watch:
+	deno test --watch src
+
+dc-deno-test:
+	docker compose run --rm deno-test
+
+################################################################################
+#                                 Documentation
+################################################################################
 
 dc-slides:
 	docker compose run --rm build-slides; rm -rf docs/assets; cp -r _content/assets docs/

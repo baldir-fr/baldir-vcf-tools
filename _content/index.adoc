@@ -1,5 +1,5 @@
-= TODO : présentation
-:author: Auteur
+= Baldir VCF Tools
+:author: Marc Bouvier
 :revealjs_controls: true
 :revealjs_progress: true
 :revealjs_hash: true
@@ -18,36 +18,11 @@
 :imagesdir: assets
 :toc: auto
 
-== Slide 1
-
-Exemple d'image
-
-image::sample.jpg[]
-
-=== Slide 1.2
-
-Exemple de code snippet avec import.
-[source,yml]
-----
-include::../docker-compose.yml[]
-----
-
-== Slide 2
-
-[.notes]
---
-Contenu n'apparaissant pas dans les slides
-Mais dans les notes de présentation ou dans les pdf, ebook, docbook.
---
-
-Ce chapitre contient des notes de présentation.
 
 ifdef::backend-revealjs[]
 
-== Généré depuis le même fichier Asciidoc
-Chapitre uniquement généré dans les slides.
+== Other formats available
 
-* link:index.html[Slides générées]
 * link:output.pdf[Pdf]
 * link:output.epub[Ebook]
 * link:output.docbook.xml[Docbook]

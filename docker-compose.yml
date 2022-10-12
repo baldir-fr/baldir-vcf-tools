@@ -3,6 +3,13 @@ version: "3.8"
 
 services:
 
+  deno-test:
+    image: "denoland/deno:alpine"
+    working_dir: "/app"
+    volumes:
+      - "./:/app"
+    command: "deno test"
+
   build-slides:
     image: "asciidoctor/docker-asciidoctor"
     volumes:

@@ -3,15 +3,15 @@
 <?asciidoc-numbered?>
 <article xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
 <info>
-<title>TODO </title>
-<subtitle>présentation</subtitle>
-<date>2022-10-07</date>
+<title>Baldir VCF Tools</title>
+<date>2022-10-12</date>
 <author>
 <personname>
-<firstname>Auteur</firstname>
+<firstname>Marc</firstname>
+<surname>Bouvier</surname>
 </personname>
 </author>
-<authorinitials>A</authorinitials>
+<authorinitials>MB</authorinitials>
 </info>
 <section xml:id="_slide_1">
 <title>Slide 1</title>
@@ -31,6 +31,13 @@
 
 
 services:
+
+  deno-test:
+    image: "denoland/deno:alpine"
+    working_dir: "/app"
+    volumes:
+      - "./:/app"
+    command: "deno test"
 
   build-slides:
     image: "asciidoctor/docker-asciidoctor"
