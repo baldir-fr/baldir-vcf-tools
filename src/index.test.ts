@@ -4,32 +4,9 @@ import {
 } from "https://deno.land/std@0.159.0/testing/asserts.ts";
 import {InvalidVCardContent, VCard} from "./index.ts";
 
-function startsWithBegin(rawContent:string):boolean{
-  return rawContent
-    .toLowerCase()
-    .startsWith("begin:vcard");
-}function endsWithEnd(rawContent:string):boolean {
-  return rawContent
-    .toLowerCase()
-    .trimEnd()
-    .endsWith("end:vcard");
-}
 
 function parseVCard(rawContent: string): VCard {
-
-  if (!startsWithBegin(rawContent)){
-    throw new InvalidVCardContent(
-      "The content entity MUST begin with the BEGIN property " +
-      "with a value of \"VCARD\". The value is case-insensitive.")
-  }
-  if (!endsWithEnd(rawContent)){
-    throw new InvalidVCardContent(
-      "The content entity MUST end with the END type " +
-      "with a value of \"VCARD\". The value is case-insensitive.")
-  }
-
-  return new VCard();
-
+  return new VCard(rawContent)
 }
 
 Deno.test("VCard", async (t) => {
