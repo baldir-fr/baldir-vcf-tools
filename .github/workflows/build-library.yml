@@ -10,5 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     container: "denoland/deno:alpine"
     steps:
+      - uses: actions/checkout@v3
       - name: Deno test
         run: deno test
