@@ -3,3 +3,4 @@
 /.cache/
 /docs/~$output.docx
 .sandbox
+/coverage/

@@ -22,7 +22,7 @@ build-pandoc:
       - "docs"
 
 pages:
-  image: alpine
+  image: alpinec
   needs:
     - build-adoc
     - build-pandoc
