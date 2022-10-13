@@ -18,12 +18,15 @@ Deno.test("VCard", async (t) => {
 
         assertObjectMatch(parseVCard("BEGIN:VCARD\n" +
           "VERSION:4.0\n" +
+          "FN: Marc Bouvier\n" +
           "END:VCARD\n"), {});
         assertObjectMatch(parseVCard("begin:vcard\n" +
           "VERSION:4.0\n" +
+          "FN: Marc Bouvier\n" +
           "END:VCARD\n"), {});
         assertObjectMatch(parseVCard("BEGIN:VCARd\n" +
           "VERSION:4.0\n" +
+          "FN: Marc Bouvier\n" +
           "END:VCARD\n"), {});
       })
 
@@ -99,6 +102,7 @@ Deno.test("VCard", async (t) => {
           try {
             parseVCard("BEGIN:VCARD\n" +
               `VERSION:${version}\n` +
+              "FN: Marc Bouvier\n" +
               "END:VCARD\n")
           } catch (e) {
             fail("should not throw")
@@ -112,11 +116,26 @@ Deno.test("VCard", async (t) => {
         `throws when VERSION is not supported ("${version}")`, () => {
           assertThrows(() => parseVCard("BEGIN:VCARD\n" +
               `VERSION:${version}\n` +
+              "FN: Marc Bouvier\n" +
               "END:VCARD\n"), InvalidVCardContent,
             "A vCard object MUST include a valid VERSION property.")
         })
     }
 
+
+    // https://datatracker.ietf.org/doc/html/rfc6350#section-3.3
+    // https://datatracker.ietf.org/doc/html/rfc6350#section-6.2.1
+    await generalProperties.step(
+      "throws when FN property is not present", () => {
+
+        assertThrows(() => parseVCard("BEGIN:VCARD\n" +
+            "VERSION:4.0\n" +
+            "\n" +
+            "END:VCARD\n"),
+          InvalidVCardContent,
+          "A vCard object MUST include the FN property.");
+
+      })
 
   });
 

@@ -34,6 +34,10 @@ export class VCard {
         "A vCard object MUST include a valid VERSION property.")
     }
 
+    if(!VCard.containsFn(rawContent)){
+      throw new InvalidVCardContent(
+        "A vCard object MUST include the FN property.")
+    }
   }
 
   private static containsVersion(rawContent: String) {
@@ -88,6 +92,14 @@ export class VCard {
       .toLowerCase()
       .split('\n')
       .includes("version:3.0");
+  }
+
+  private static containsFn(rawContent: String) {
+    return rawContent
+      .toLowerCase()
+      .split('\n')
+      .some(value => value.startsWith("fn:"));
+
   }
 }
 
