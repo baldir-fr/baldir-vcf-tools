@@ -27,6 +27,11 @@ export class VCard {
         throw new InvalidVCardContent(
           "VERSION:4.0 MUST come immediately after BEGIN:VCARD.")
       }
+    } else if (VCard.containsVersion2_1(rawContent)) {
+    } else if (VCard.containsVersion3_0(rawContent)) {
+    } else {
+      throw new InvalidVCardContent(
+        "A vCard object MUST include a valid VERSION property.")
     }
 
   }
@@ -69,4 +74,22 @@ export class VCard {
       .split('\n')
       .includes("version:4.0");
   }
+
+
+  private static containsVersion2_1(rawContent: String) {
+    return rawContent
+      .toLowerCase()
+      .split('\n')
+      .includes("version:2.1");
+  }
+
+  private static containsVersion3_0(rawContent: String) {
+    return rawContent
+      .toLowerCase()
+      .split('\n')
+      .includes("version:3.0");
+  }
 }
+
+
+
