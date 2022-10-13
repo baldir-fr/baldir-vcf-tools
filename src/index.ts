@@ -4,7 +4,13 @@ export class InvalidVCardContent extends Error {
   }
 }
 
+interface VCardData {
+  fn: string
+}
+
 export class VCard {
+
+  private readonly _data: VCardData;
 
   constructor(rawContent: String) {
 
@@ -34,10 +40,13 @@ export class VCard {
         "A vCard object MUST include a valid VERSION property.")
     }
 
-    if(!VCard.containsFn(rawContent)){
+    if (!VCard.containsFn(rawContent)) {
       throw new InvalidVCardContent(
         "A vCard object MUST include the FN property.")
     }
+
+    this._data = {fn: VCard.parseFn(rawContent)}
+
   }
 
   private static containsVersion(rawContent: String) {
@@ -99,6 +108,25 @@ export class VCard {
       .toLowerCase()
       .split('\n')
       .some(value => value.startsWith("fn:"));
+
+  }
+
+  data(): VCardData {
+
+    return this._data
+  }
+
+  private static parseFn(rawContent: String) {
+
+    let lines = rawContent
+      .split("\n");
+
+    const fnIndex = lines
+      .map(it => it.toLowerCase())
+      .findIndex(it => it.startsWith("fn:"))
+
+    return lines[fnIndex]
+      .split(":")[1].trim();
 
   }
 }

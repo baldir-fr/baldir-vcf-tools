@@ -1,4 +1,5 @@
 import {
+  assertEquals,
   assertThrows,
   assertObjectMatch,
   fail
@@ -139,5 +140,15 @@ Deno.test("VCard", async (t) => {
 
   });
 
+  await t.step("Data access", async (dataAccess) => {
+    // https://datatracker.ietf.org/doc/html/rfc6350#section-6.2.1
+    await dataAccess.step("fn", async () => {
+      const vCard = parseVCard("BEGIN:VCARD\n" +
+        "VERSION:4.0\n" +
+        "FN: Marc Bouvier\n" +
+        "END:VCARD\n")
+      assertEquals(vCard.data().fn, "Marc Bouvier")
+    })
+  })
 
 });
